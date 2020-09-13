@@ -77,7 +77,7 @@ def main(argv):
     data = load_data("car_sales.json")
     summary = process_data(data)
     print(summary)
-    filename = "./tmp/report.pdf" if os.name == "nt" else "/tmp/report.pdf"
+    filename = "./tmp/cars.pdf" if os.name == "nt" else "/tmp/cars.pdf"
 
     # turn this into a PDF report
     additional_info = "<br/>".join(summary)
