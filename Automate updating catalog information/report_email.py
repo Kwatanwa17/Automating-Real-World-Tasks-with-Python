@@ -43,7 +43,7 @@ def main():
 
     # turn this into a PDF report
     paragraph = "<br/><br/>".join(summary)
-    reports.generate(filename, "Processed Update on " + datetime.date.today().strftime("%B %d, %Y"), paragraph)
+    reports.generate_report(filename, "Processed Update on " + datetime.date.today().strftime("%B %d, %Y"), paragraph)
 
     # send the PDF report as an email attachment
     sender = "automation@example.com"

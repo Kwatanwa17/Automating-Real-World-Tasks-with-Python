@@ -5,7 +5,7 @@ from reportlab.platypus import Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
 
-def generate(attachment, title, paragraph):
+def generate_report(attachment, title, paragraph):
     styles = getSampleStyleSheet()
     report = SimpleDocTemplate(attachment)
     report_title = Paragraph(title, styles["h1"])
