@@ -9,3 +9,5 @@ Process Text Files with Python Dictionaries and Upload to Running Web Service/en
 Process Text Files with Python Dictionaries and Upload to Running Web Service/data/feedback/*
 /.idea/
 /Automate updating catalog information/env/
+/Automate updating catalog information/supplier-data/
+/Automate updating catalog information/processed.pdf

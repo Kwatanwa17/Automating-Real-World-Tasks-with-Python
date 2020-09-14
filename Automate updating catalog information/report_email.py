@@ -15,7 +15,8 @@ def process_data():
   Returns a list of lines that summarize the information.
   """
     locale.setlocale(locale.LC_ALL, 'en_US.UTF8')
-    input_dir = "/supplier-data/descriptions"
+    root = os.getcwd()
+    input_dir = os.path.join(root, "supplier-data", "descriptions")
     txt_file_names = os.listdir(input_dir)
     summary = []
 
@@ -25,7 +26,7 @@ def process_data():
                 lines = text.readlines()
                 lines = [line.strip() for line in lines][:2]
                 keys = ["name", "weight"]
-                summary.append("<br/>".join(key + ": " + "line" for key, line in zip(keys, lines)))
+                summary.append("<br/>".join(key + ": " + line for key, line in zip(keys, lines)))
 
         except IOError:
             print("IOError: " + file_name)
@@ -41,8 +42,8 @@ def main():
     filename = "processed.pdf"
 
     # turn this into a PDF report
-    paragraph = "<p></p>".join(summary)
-    reports.generate(filename, "Processed Update on" + datetime.date.today().strftime("%B %d, %Y"), paragraph)
+    paragraph = "<br/><br/>".join(summary)
+    reports.generate(filename, "Processed Update on " + datetime.date.today().strftime("%B %d, %Y"), paragraph)
 
     # send the PDF report as an email attachment
     sender = "automation@example.com"
@@ -50,8 +51,8 @@ def main():
     subject = "Upload Completed - Online Fruit Store"
     body = "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
 
-    message = emails.generate(sender, receiver, subject, body, filename)
-    emails.send(message)
+    message = emails.generate_email(sender, receiver, subject, body, filename)
+    emails.send_email(message)
 
 
 if __name__ == "__main__":

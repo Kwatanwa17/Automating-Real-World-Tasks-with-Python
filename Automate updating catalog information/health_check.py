@@ -44,8 +44,8 @@ def main():
             receiver = "{}@example.com".format(os.environ.get('USER'))
             body = "Please check your system and resolve the issue as soon as possible."
 
-            message = emails.generate(sender, receiver, subject, body)
-            emails.send(message)
+            message = emails.generate_error_report(sender, receiver, subject, body)
+            emails.send_email(message)
 
 
 if __name__ == "__main__":
